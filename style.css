@@ -1,9 +1,59 @@
 @charset "UTF-8";
 
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
+@font-face {
+  font-family: "Hemi";
+  src: url(./fonts/hemi\ head\ bd\ it.ttf) format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
 :root {
   --cor-titulo: #0c1b33;
   --cor-fundo: #f6f0ed;
   --cor-principal: #657ed4;
   --cor-secundaria: #69a297;
   --cor-destaque: #2ca58d;
+
+  --fonte-padrao: "Montserrat", sans-serif;
+  --fonte-titulo: "Hemi";
+}
+
+body{
+  background-color: var(--cor-fundo);
+  font-family: var(--fonte-padrao);
+}
+
+.logo{
+  width: 50px;
+}
+
+.fonte-especial{
+  font-family: var(--fonte-titulo);
+  
+}
+
+.cor-especial{
+  background-color: var(--cor-principal);
+}
+
+main{
+  max-width: 1000px;
+  background-color: white;
+  margin: auto;
+  padding: 20px;
+}
+
+.titulo-principal{
+  margin: auto;
+  margin-bottom: 30px;
+  max-width: 700px;
+  text-align: center;
+  border: solid var(--cor-titulo) ;
+  font-size: 1.6em;
+  font-family: var(--fonte-titulo);
+  padding: 20px;
+  color: white;
+  background-color: var(--cor-secundaria);
 }
