@@ -63,51 +63,45 @@
     </header>
 
     <main>
-      <h1 class="titulo-principal">Converta Real para Dólar, Euro, Libra ou Biticoin</h1>
+      <h1 class="titulo-principal">
+        Converta Real para Dólar, Euro, Libra ou Biticoin
+      </h1>
 
-      <section class="conversor">
+      <form class="conversor">
         <h2>Selecione uma moeda para a conversão</h2>
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input"
-            type="radio"
-            id="dolar"
-            value="option1"
-            name="moedas"
-          />
-          <label class="form-check-label" for="dolar">Dolar</label>
+
+        <div class="opcoes">
+          <input type="radio" name="moedas" id="dolar" checked />
+          <label for="dolar" class="me-4">Dólar</label>
+          <input type="radio" name="moedas" id="euro" />
+          <label for="euro" class="me-4">Euro</label>
+          <input type="radio" name="moedas" id="libra" />
+          <label for="libra" class="me-4">Libra</label>
+          <input type="radio" name="moedas" id="biticoin" />
+          <label for="biticoin">Biticoin</label>
         </div>
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input"
-            type="radio"
-            id="euro"
-            value="option2"
-            name="moedas"
-          />
-          <label class="form-check-label" for="euro">Euro</label>
+
+        <div class="valores">
+          <div class="valor-reais">
+            <label for="valor-em-reais">Valor Em Reais:</label>
+            <input
+              type="number"
+              name="valor-em-reais"
+              id="valor-em-reais"
+              min="0"
+            />
+          </div>
+          <button type="button">&#8646;</button>
+          <div class="resultado">
+            <label for="resultado-final">Resultado:</label>
+            <input type="text" name="resultado-final" id="resultado-final" />
+          </div>
         </div>
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input"
-            type="radio"
-            id="libra"
-            value="option3"
-            name="moedas"
-          />
-          <label class="form-check-label" for="libra">Libra</label>
+
+        <div class="botao">
+          <button type="reset">Reset</button>
         </div>
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input"
-            type="radio"
-            id="biticoin"
-            value="option4"
-            name="moedas"
-          />
-          <label class="form-check-label" for="biticoin">Biticoin</label>
-        </div>
-      </section>
+      </form>
     </main>
 
     <script
