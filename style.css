@@ -41,7 +41,7 @@ main {
 .titulo-principal {
   margin: auto;
   margin-bottom: 30px;
-  max-width: 700px;
+  max-width: 800px;
   text-align: center;
   font-size: 1.6em;
   font-family: var(--fonte-titulo);
@@ -58,33 +58,38 @@ form.conversor {
 
 .conversor h2 {
   font-size: 1.5em;
+  color: var(--cor-forte);
 }
 
 div.opcoes {
   margin-top: 30px;
 }
 
-div.valores {
+.opcoes label,.valor-resultado label{
+  color:var(--cor-forte);
+}
+
+div.valor-resultado {
   display: flex;
   justify-content: center;
   gap: 10px;
   margin: 30px 0px;
 }
 
-div.valor-reais,
-div.resultado {
+div.container-valor-reais,
+div.container-resultado {
   display: flex;
   flex-direction: column;
 }
 
-.valores input{
+.valor-resultado input {
   padding: 2px;
   text-indent: 10px;
   width: 100%;
   border-radius: 5px;
 }
 
-.valores button{
+.valor-resultado button {
   width: 70px;
   height: 40px;
   margin-top: 20px;
@@ -93,11 +98,71 @@ div.resultado {
   color: white;
   border-radius: 10px;
   font-size: 1.5em;
-  transition: .3s;
+  transition-duration: 0.3s;
 }
 
-.valores button:hover{
+.valor-resultado button:hover {
   background-color: var(--cor-forte);
+}
+
+.container-limpar > button {
+  border: none;
+  color: white;
+  background-color: var(--cor-destaque);
+  width: 100px;
+  height: 40px;
+  border-radius: 5px;
+  transition-duration: .3s;
+}
+
+.container-limpar > button:hover{
+  opacity: 0.9;
+  transform: scale(1.1);
+}
+
+aside.cotacoes{
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: var(--cor-secundaria);
+  padding: 20px;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.437);
+}
+
+.cotacoes h3{
+  background-color: var(--cor-forte);
+  margin: -20px -20px 20px -20px;
+  border-radius: 10px 10px 0px 0px;
+  padding: 5px;
+  font-size: 1.4em;
+}
+
+.cotacoes ul{
+  list-style-position: inside;
+  line-height: 30px;
+  list-style-type:"\1F816\0020";
+  
+}
+
+.cotacoes ul li {
+  font-size: 1.1em;
+}
+
+.cotacoes p {
+  font-size: 1.5em;
+}
+
+footer{
+  margin-top: 20px;
+  background-color: var(--cor-destaque);
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+footer p{
+  margin:0;
 }
 
 .fonte-especial {
