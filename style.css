@@ -181,10 +181,15 @@ footer p {
 }
 
 @media screen and (max-width: 600px) {
+  
+  .navbar > .container-fluid > a {
+   font-size: 1em;
+  }
+
   .titulo-principal {
     margin: -20px -20px 15px -20px;
     border-radius: 0;
-    font-size: 1.3em;
+    font-size: 1.2em;
   }
 
   .conversor h2 {
