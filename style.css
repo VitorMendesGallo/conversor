@@ -149,7 +149,11 @@ aside.cotacoes {
 .cotacoes ul {
   list-style-position: inside;
   line-height: 30px;
-  list-style-type: "\1F816\0020";
+  list-style: none;
+}
+
+.cotacoes ul li::before {
+  content: "\2605\00A0\00A0";
 }
 
 .cotacoes ul li {
