@@ -1,28 +1,21 @@
 @charset "UTF-8";
 
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
-
-@font-face {
-  font-family: "Hemi";
-  src: url(./fonts/hemi\ head\ bd\ it.ttf) format("truetype");
-  font-style: normal;
-  font-weight: normal;
-}
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
 
 :root {
-  --cor-forte: #283354;
-  --cor-fundo: #abb6db;
-  --cor-principal: #657ed4;
-  --cor-secundaria: #4d61a1;
-  --cor-destaque: #424654;
+  --cor-forte: rgba(43, 43, 43, 1);
+  --cor-fundo: rgba(242, 236, 236, 1);
+  --cor-principal: rgba(20, 115, 97, 1);
+  --cor-secundaria: rgba(40, 89, 80, 1);
+  --cor-destaque: rgba(69, 69, 69, 1);
 
-  --fonte-padrao: "Montserrat", sans-serif;
-  --fonte-titulo: "Hemi";
+  --fonte-padrao: "Inter", sans-serif;
 }
 
 body {
   background-color: var(--cor-fundo);
   font-family: var(--fonte-padrao);
+  height: 100vh;
 }
 
 img.logo {
@@ -32,10 +25,10 @@ img.logo {
 main {
   max-width: 1000px;
   background-color: white;
-  margin: auto;
+  margin: calc(((100vh - 120px) - 635px ) / 2) auto;
   padding: 20px;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.437);
-  border-radius: 0px 0px 10px 10px;
+  border-radius: 10px;
 }
 
 .titulo-principal {
@@ -43,15 +36,11 @@ main {
   margin-bottom: 30px;
   max-width: 800px;
   text-align: center;
-  font-size: 1.6em;
-  font-family: var(--fonte-titulo);
+  font-size: 1.5em;
+  font-family: var(--fonte-padrao);
   padding: 20px;
   color: white;
-  background-image: linear-gradient(
-    to top,
-    var(--cor-principal),
-    var(--cor-forte)
-  );
+  background-color: var(--cor-secundaria);
   border-radius: 10px;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.437);
 }
@@ -165,7 +154,6 @@ aside.cotacoes {
 }
 
 footer {
-  margin-top: 20px;
   background-color: var(--cor-destaque);
   color: white;
   text-align: center;
@@ -177,7 +165,7 @@ footer p {
 }
 
 .fonte-especial {
-  font-family: var(--fonte-titulo);
+  font-family: var(--fonte-padrao);
 }
 
 .cor-especial {
