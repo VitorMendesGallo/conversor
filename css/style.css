@@ -15,47 +15,49 @@
 body {
   background-color: var(--cor-fundo);
   font-family: var(--fonte-padrao);
-  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 img.logo {
-  max-width: 50px;
+  width: 3rem;
 }
 
 main {
-  max-width: 1000px;
+  min-width: 70%;
   background-color: white;
-  margin: calc(((100vh - 120px) - 635px ) / 2) auto;
-  padding: 20px;
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.437);
-  border-radius: 10px;
+  margin: auto;
+  padding: 2rem;
+  flex-grow: 1;
+  box-shadow: 0px 0px 5px -2px rgba(0, 0, 0, 0.437);
 }
 
 .titulo-principal {
   margin: auto;
-  margin-bottom: 30px;
-  max-width: 800px;
+  max-width: 60rem;
+  padding: 1.5rem 0.5rem;
   text-align: center;
-  font-size: 1.5em;
+  font-size: 1.5rem;
   font-family: var(--fonte-padrao);
-  padding: 20px;
   color: white;
   background-color: var(--cor-secundaria);
-  border-radius: 10px;
+  border-radius: 0.8rem;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.437);
 }
 
 form.conversor {
   text-align: center;
+  padding: 2rem;
 }
 
 .conversor h2 {
-  font-size: 1.5em;
+  font-size: 1.5rem;
   color: var(--cor-forte);
 }
 
 div.opcoes {
-  margin-top: 30px;
+  margin-top: 2rem;
   display: flex;
   justify-content: center;
   gap: 5%;
@@ -69,8 +71,9 @@ div.opcoes {
 div.valor-resultado {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin: 30px 0px;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0;
 }
 
 div.container-valor-reais,
@@ -80,26 +83,45 @@ div.container-resultado {
 }
 
 .valor-resultado input {
-  padding: 2px;
-  text-indent: 10px;
+  padding: 0.2rem;
+  text-indent: 0.8rem;
   width: 100%;
-  border-radius: 5px;
+  border-radius: 0.4rem;
 }
 
-.valor-resultado button {
-  width: 70px;
-  height: 40px;
-  margin-top: 20px;
+#botao-converter {
+  width: 4rem;
+  height: 4rem;
   border: none;
   background-color: var(--cor-principal);
   color: white;
-  border-radius: 10px;
+  border-radius: 50%;
   font-size: 1.5em;
-  transition-duration: 0.3s;
+  transition: transform 0.2s ease;
 }
 
-.valor-resultado button:hover {
-  background-color: var(--cor-forte);
+#botao-converter img {
+  width: 3rem;
+  height: 3rem;
+}
+
+#botao-converter:active {
+  transform: scale(0.95);
+}
+
+/* Classe que executa a animação de carregamento */
+.spinning {
+  animation: spin 1.2s ease-out;
+}
+
+/* Animação de carregamento: */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(720deg);
+  }
 }
 
 .container-limpar > button {
