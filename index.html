@@ -94,7 +94,7 @@
             <label for="valor-reais">Valor Em Reais:</label>
             <input type="number" name="valor-reais" id="valor-reais" min="0" />
           </div>
-          <button type="button" id="botao-converter">
+          <button type="button" id="botao-converter" >
             <img
               src="assets/images/convert.png"
               alt="Setas em esperial indicando conversão"
@@ -103,12 +103,12 @@
           </button>
           <div class="container-resultado">
             <label for="resultado">Resultado:</label>
-            <input type="text" name="resultado" id="resultado" />
+            <input type="text" name="resultado" id="resultado" readonly />
           </div>
         </div>
 
         <div class="container-limpar">
-          <button type="reset">Limpar</button>
+          <button type="reset" id="botao-limpar">Limpar</button>
         </div>
       </form>
 

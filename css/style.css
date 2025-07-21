@@ -93,11 +93,12 @@ div.container-resultado {
   width: 4rem;
   height: 4rem;
   border: none;
-  background-color: var(--cor-principal);
+  background-color: var(--cor-destaque);
   color: white;
   border-radius: 50%;
   font-size: 1.5em;
   transition: transform 0.2s ease;
+  cursor: not-allowed;
 }
 
 #botao-converter img {
