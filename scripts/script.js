@@ -43,3 +43,12 @@ valorReaisInput.addEventListener("keyup", () => {
     }
 
 })
+
+
+botaoLimpar.addEventListener("click", () => {
+    valorReaisInput.value = "";
+    resultadoInput.value = "R$ 0,00";
+    botaoConverter.disabled = true;
+    botaoConverter.style.cursor = "not-allowed";
+    botaoConverter.style.backgroundColor = "var(--cor-destaque)";
+});
