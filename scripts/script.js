@@ -2,7 +2,7 @@ const botaoConverter = document.getElementById("botao-converter");
 const iconeBotaoConverter = document.getElementById("icone-botao-converter");
 const opcoesMoeda = document.getElementsByName("moedas");
 const valorReaisInput = document.getElementById("valor-reais");
-const resultadoInput = document.getElementById("resultado");
+const resultadoSaida = document.getElementById("resultado");
 const botaoLimpar = document.getElementById("botao-limpar");
 
 botaoConverter.disabled = true;
@@ -10,15 +10,17 @@ botaoConverter.disabled = true;
 let taxasCambio = {};
 
 document.addEventListener("DOMContentLoaded", async () => {
+
+    if (valorReaisInput) {
+        valorReaisInput.value = ''; 
+    }
+
   taxasCambio = await buscarCotacoes();
   if (taxasCambio) {
     console.log("Taxas de câmbio carregadas com sucesso.");
   } else {
     console.error("Falha ao carregar as taxas de câmbio.");
   }
-
-  console.log("Taxas de câmbio:", taxasCambio);
-
 });
 
 botaoConverter.addEventListener("click", () => {
@@ -31,19 +33,11 @@ botaoConverter.addEventListener("click", () => {
   }, 1200);
 
   if (!taxasCambio.dolar) {
-    console.log('Aguardando o carregamento das taxas...');
+    console.log("Aguardando o carregamento das taxas...");
     return;
   }
 
-  if (opcoesMoeda[0].checked) {
-    converterParaDolar();
-  } else if (opcoesMoeda[1].checked) {
-    converterParaEuro();
-  } else if (opcoesMoeda[2].checked) {
-    converterParaLibra();
-  } else if (opcoesMoeda[3].checked) {
-    converterParaBitcoin();
-  }
+  fazerConversao();
 });
 
 valorReaisInput.addEventListener("keyup", () => {
@@ -63,7 +57,7 @@ valorReaisInput.addEventListener("keyup", () => {
 
 botaoLimpar.addEventListener("click", () => {
   valorReaisInput.value = "";
-  resultadoInput.value = "R$ 0,00";
+  resultadoSaida.value = "0,00";
   botaoConverter.disabled = true;
   botaoConverter.style.cursor = "not-allowed";
   botaoConverter.style.backgroundColor = "var(--cor-destaque)";
@@ -94,5 +88,46 @@ async function buscarCotacoes() {
   }
 }
 
+function fazerConversao() {
+  const valorReais = parseFloat(valorReaisInput.value);
+  const moedaSelecionada = document.querySelector(
+    'input[name="moedas"]:checked'
+  ).value;
+  let resultado;
 
-
+  switch (moedaSelecionada) {
+    case "dolar":
+      resultado = valorReais / taxasCambio.dolar;
+      resultadoSaida.value = resultado.toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD",
+      });
+      break;
+    case "euro":
+      resultado = valorReais / taxasCambio.euro;
+      resultadoSaida.value = resultado.toLocaleString("de-DE", {
+        style: "currency",
+        currency: "EUR",
+      });
+      break;
+    case "libra":
+      resultado = valorReais / taxasCambio.libra;
+      resultadoSaida.value = resultado.toLocaleString("en-GB", {
+        style: "currency",
+        currency: "GBP",
+      });
+      break;
+    case "bitcoin":
+      resultado = valorReais / taxasCambio.bitcoin;
+      console.log("Valor em Bitcoin:", resultado);
+      resultadoSaida.value = resultado.toLocaleString("en-US", {
+        style: "currency",
+        currency: "BTC",
+        minimumFractionDigits: 4,
+        maximumFractionDigits: 8,
+      });
+      break;
+    default:
+      resultado = 0;
+  }
+}
