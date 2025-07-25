@@ -4,16 +4,17 @@ const opcoesMoeda = document.getElementsByName("moedas");
 const valorReaisInput = document.getElementById("valor-reais");
 const resultadoSaida = document.getElementById("resultado");
 const botaoLimpar = document.getElementById("botao-limpar");
+const listaCotacoes = document.querySelectorAll(".item-cotacao");
+const ultimaConsulta = document.getElementById("ultima-consulta");
 
 botaoConverter.disabled = true;
 
 let taxasCambio = {};
 
 document.addEventListener("DOMContentLoaded", async () => {
-
-    if (valorReaisInput) {
-        valorReaisInput.value = ''; 
-    }
+  if (valorReaisInput) {
+    valorReaisInput.value = "";
+  }
 
   taxasCambio = await buscarCotacoes();
   if (taxasCambio) {
@@ -21,6 +22,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   } else {
     console.error("Falha ao carregar as taxas de câmbio.");
   }
+
+  carregarCotacoesAtualizadas();
 });
 
 botaoConverter.addEventListener("click", () => {
@@ -130,4 +133,28 @@ function fazerConversao() {
     default:
       resultado = 0;
   }
+}
+
+function carregarCotacoesAtualizadas() {
+  listaCotacoes[0].textContent = `Dólar: R$ ${taxasCambio.dolar.toFixed(2)}`;
+  listaCotacoes[1].textContent = `Euro: R$ ${taxasCambio.euro.toFixed(2)}`;
+  listaCotacoes[2].textContent = `Libra: R$ ${taxasCambio.libra.toFixed(2)}`;
+  listaCotacoes[3].textContent = `Bitcoin: R$ ${taxasCambio.bitcoin.toFixed(
+    2
+  )}`;
+
+  const dataAtual = new Date();
+
+  const dataFormatada = dataAtual
+    .toLocaleString("pt-BR", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    })
+    .replace(",", " às");
+
+  ultimaConsulta.textContent = `Última consulta: ${dataFormatada}`;
 }

@@ -72,7 +72,13 @@
 
         <div class="opcoes">
           <div>
-            <input type="radio" name="moedas" id="dolar" value="dolar" checked />
+            <input
+              type="radio"
+              name="moedas"
+              id="dolar"
+              value="dolar"
+              checked
+            />
             <label for="dolar">Dólar</label>
           </div>
           <div>
@@ -116,12 +122,12 @@
         <h3 class="fonte-especial">Cotações</h3>
         <div class="d-flex align-items-center justify-content-evenly">
           <ul>
-            <li>1 Dolar = ...Reais</li>
-            <li>1 Euro = ...Reais</li>
-            <li>1 Libra = ...Reais</li>
-            <li>1 Biticoin = ...Reais</li>
+            <li class="item-cotacao">1 Dolar = ...Reais</li>
+            <li class="item-cotacao">1 Euro = ...Reais</li>
+            <li class="item-cotacao">1 Libra = ...Reais</li>
+            <li class="item-cotacao">1 Bitcoin = ...Reais</li>
           </ul>
-          <p>Última atualização:<br />12/10/2022</p>
+          <p id="ultima-consulta"></p>
         </div>
       </aside>
     </main>
