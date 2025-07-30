@@ -1,7 +1,7 @@
 const botaoConverter = document.getElementById("botao-converter");
 const iconeBotaoConverter = document.getElementById("icone-botao-converter");
 const opcoesMoeda = document.getElementsByName("moedas");
-const valorReaisInput = document.getElementById("valor-reais");
+const valorSelecionadoInput = document.getElementById("valor-selecionado");
 const resultadoSaida = document.getElementById("resultado");
 const botaoLimpar = document.getElementById("botao-limpar");
 const listaCotacoes = document.querySelectorAll(".item-cotacao");
@@ -12,8 +12,8 @@ botaoConverter.disabled = true;
 let taxasCambio = {};
 
 document.addEventListener("DOMContentLoaded", async () => {
-  if (valorReaisInput) {
-    valorReaisInput.value = "";
+  if (valorSelecionadoInput) {
+    valorSelecionadoInput.value = "";
   }
 
   taxasCambio = await buscarCotacoes();
@@ -43,10 +43,10 @@ botaoConverter.addEventListener("click", () => {
   fazerConversao();
 });
 
-valorReaisInput.addEventListener("keyup", () => {
+valorSelecionadoInput.addEventListener("keyup", () => {
   if (
-    parseFloat(valorReaisInput.value) <= 0 ||
-    !parseFloat(valorReaisInput.value)
+    parseFloat(valorSelecionadoInput.value) <= 0 ||
+    !parseFloat(valorSelecionadoInput.value)
   ) {
     botaoConverter.disabled = true;
     botaoConverter.style.cursor = "not-allowed";
@@ -59,7 +59,7 @@ valorReaisInput.addEventListener("keyup", () => {
 });
 
 botaoLimpar.addEventListener("click", () => {
-  valorReaisInput.value = "";
+  valorSelecionadoInput.value = "";
   resultadoSaida.value = "0,00";
   botaoConverter.disabled = true;
   botaoConverter.style.cursor = "not-allowed";
@@ -92,7 +92,7 @@ async function buscarCotacoes() {
 }
 
 function fazerConversao() {
-  const valorReais = parseFloat(valorReaisInput.value);
+  const valorReais = parseFloat(valorSelecionadoInput.value);
   const moedaSelecionada = document.querySelector(
     'input[name="moedas"]:checked'
   ).value;

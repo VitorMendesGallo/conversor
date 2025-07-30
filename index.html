@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Conversor</title>
+    <title>Conversor para real</title>
     <link
       rel="shortcut icon"
       href="assets/images/favicon.ico"
@@ -27,7 +27,7 @@
               alt="Logo do site"
               class="logo"
             />
-            Conversor de Moeda</a
+            Conversor para Real</a
           >
           <button
             class="navbar-toggler"
@@ -64,7 +64,7 @@
 
     <main>
       <h1 class="titulo-principal">
-        Converta Real para Dólar, Euro, Libra ou Biticoin
+        Converta várias moedas para Real
       </h1>
 
       <form class="conversor">
@@ -96,9 +96,9 @@
         </div>
 
         <div class="valor-resultado">
-          <div class="container-valor-reais">
-            <label for="valor-reais">Valor Em Reais:</label>
-            <input type="number" name="valor-reais" id="valor-reais" min="0" />
+          <div class="container-valor-selecionado">
+            <label for="valor-selecionado">Valor da moeda Selecionada:</label>
+            <input type="number" name="valor-selecionado" id="valor-selecionado" min="0" />
           </div>
           <button type="button" id="botao-converter">
             <img
@@ -109,7 +109,7 @@
           </button>
           <div class="container-resultado">
             <p>Resultado:</p>
-            <output id="resultado" for="valor-reais">0,00</output>
+            <output id="resultado" for="valor-selecionado">0,00</output>
           </div>
         </div>
 

@@ -76,7 +76,7 @@ div.valor-resultado {
   margin: 2rem 0;
 }
 
-div.container-valor-reais,
+div.container-valor-selecionado,
 div.container-resultado {
   display: flex;
   flex-direction: column;
@@ -217,7 +217,7 @@ footer p {
     font-size: 14px;
   }
 
-  div.container-valor-reais,
+  div.container-valor-selecionado,
   div.container-resultado {
     width: 40%;
   }
@@ -242,7 +242,7 @@ footer p {
     align-items: center;
   }
 
-  div.container-valor-reais,
+  div.container-valor-selecionado,
   div.container-resultado {
     width: 100%;
   }
@@ -261,7 +261,7 @@ footer p {
     font-size: 11px;
   }
 
-  div.container-valor-reais,
+  div.container-valor-selecionado,
   div.container-resultado {
     width: 100%;
   }
