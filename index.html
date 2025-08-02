@@ -68,32 +68,11 @@
       </h1>
 
       <form class="conversor">
-        <h2>Selecione uma moeda para a conversão</h2>
+        <label for="moeda">Selecione uma moeda para a conversão:</label>
 
-        <div class="opcoes">
-          <div>
-            <input
-              type="radio"
-              name="moedas"
-              id="dolar"
-              value="dolar"
-              checked
-            />
-            <label for="dolar">Dólar</label>
-          </div>
-          <div>
-            <input type="radio" name="moedas" id="euro" value="euro" />
-            <label for="euro">Euro</label>
-          </div>
-          <div>
-            <input type="radio" name="moedas" id="libra" value="libra" />
-            <label for="libra">Libra</label>
-          </div>
-          <div>
-            <input type="radio" name="moedas" id="biticoin" value="bitcoin" />
-            <label for="bitcoin">Biticoin</label>
-          </div>
-        </div>
+        <select name="moeda" id="moeda">
+          
+        </select>
 
         <div class="valor-resultado">
           <div class="container-valor-selecionado">
@@ -108,8 +87,8 @@
             />
           </button>
           <div class="container-resultado">
-            <p>Resultado:</p>
-            <output id="resultado" for="valor-selecionado">0,00</output>
+            <p>Resultado em Reais:</p>
+            <output id="resultado" for="valor-selecionado">0,00 R$</output>
           </div>
         </div>
 
@@ -121,11 +100,9 @@
       <aside class="cotacoes">
         <h3 class="fonte-especial">Cotações</h3>
         <div class="d-flex align-items-center justify-content-evenly">
-          <ul>
-            <li class="item-cotacao">1 Dolar = ...Reais</li>
-            <li class="item-cotacao">1 Euro = ...Reais</li>
-            <li class="item-cotacao">1 Libra = ...Reais</li>
-            <li class="item-cotacao">1 Bitcoin = ...Reais</li>
+          <ul id="lista-cotacoes">
+            <!-- Itens gerados pelo JS -->
+          
           </ul>
           <p id="ultima-consulta"></p>
         </div>

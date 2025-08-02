@@ -1,22 +1,43 @@
 const botaoConverter = document.getElementById("botao-converter");
 const iconeBotaoConverter = document.getElementById("icone-botao-converter");
-const opcoesMoeda = document.getElementsByName("moedas");
-const valorSelecionadoInput = document.getElementById("valor-selecionado");
+const moedaSelecionada = document.getElementById("moeda");
+const valorInserido = document.getElementById("valor-selecionado");
 const resultadoSaida = document.getElementById("resultado");
 const botaoLimpar = document.getElementById("botao-limpar");
-const listaCotacoes = document.querySelectorAll(".item-cotacao");
-const ultimaConsulta = document.getElementById("ultima-consulta");
+const ulCotacoes = document.getElementById("lista-cotacoes");
+const dadosDaConsulta = document.getElementById("ultima-consulta");
+
+const moedas = [
+  { nome: "Dólar", codigo: "USD", value: "dolar" },
+  { nome: "Euro", codigo: "EUR", value: "euro" },
+  { nome: "Libra", codigo: "GBP", value: "libra" },
+  { nome: "Bitcoin", codigo: "BTC", value: "bitcoin" },
+  { nome: "Peso Argentino", codigo: "ARS", value: "peso_argentino" },
+  { nome: "Iene", codigo: "JPY", value: "iene" },
+  { nome: "Franco Suíço", codigo: "CHF", value: "franco_suico" }, 
+  { nome: "Dólar Canadense", codigo: "CAD", value: "dolar_canadense" },
+  { nome: "Dólar Australiano", codigo: "AUD", value: "dolar_australiano" },
+  { nome: "Yuan Chinês", codigo: "CNY", value: "yuan_chines" },
+  { nome: "Won Sul-Coreano", codigo: "KRW", value: "won_sul_coreano" },
+];
 
 botaoConverter.disabled = true;
 
 let taxasCambio = {};
 
 document.addEventListener("DOMContentLoaded", async () => {
-  if (valorSelecionadoInput) {
-    valorSelecionadoInput.value = "";
+  moedaSelecionada.innerHTML =
+    `<option value="" disabled selected>Selecione uma moeda</option>` +
+    moedas.map((m) => `<option value="${m.value}">${m.nome}</option>`).join("");
+
+  moedaSelecionada.selectedIndex = 0;
+
+  if (valorInserido) {
+    valorInserido.value = "";
   }
 
   taxasCambio = await buscarCotacoes();
+
   if (taxasCambio) {
     console.log("Taxas de câmbio carregadas com sucesso.");
   } else {
@@ -43,10 +64,10 @@ botaoConverter.addEventListener("click", () => {
   fazerConversao();
 });
 
-valorSelecionadoInput.addEventListener("keyup", () => {
+valorInserido.addEventListener("keyup", () => {
   if (
-    parseFloat(valorSelecionadoInput.value) <= 0 ||
-    !parseFloat(valorSelecionadoInput.value)
+    parseFloat(valorInserido.value) <= 0 ||
+    !parseFloat(valorInserido.value)
   ) {
     botaoConverter.disabled = true;
     botaoConverter.style.cursor = "not-allowed";
@@ -59,29 +80,28 @@ valorSelecionadoInput.addEventListener("keyup", () => {
 });
 
 botaoLimpar.addEventListener("click", () => {
-  valorSelecionadoInput.value = "";
-  resultadoSaida.value = "0,00";
+  valorInserido.value = "";
+  resultadoSaida.value = "0,00 R$";
   botaoConverter.disabled = true;
   botaoConverter.style.cursor = "not-allowed";
   botaoConverter.style.backgroundColor = "var(--cor-destaque)";
+  moedaSelecionada.selectedIndex = 0;
 });
 
 async function buscarCotacoes() {
-  const apiUrl =
-    "https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL,GBP-BRL,BTC-BRL";
+  const pares = moedas.map((m) => `${m.codigo}-BRL`).join(",");
+  const apiUrl = `https://economia.awesomeapi.com.br/json/last/${pares}`;
 
   try {
     const resposta = await fetch(apiUrl);
 
-    /* Converte a resposta em um objeto JavaScript(JSON) */
     const dados = await resposta.json();
 
-    const cotacoes = {
-      dolar: parseFloat(dados.USDBRL.bid),
-      euro: parseFloat(dados.EURBRL.bid),
-      libra: parseFloat(dados.GBPBRL.bid),
-      bitcoin: parseFloat(dados.BTCBRL.bid),
-    };
+    const cotacoes = {};
+    moedas.forEach((m) => {
+      const key = `${m.codigo}BRL`;
+      cotacoes[m.value] = parseFloat(dados[key].bid);
+    });
 
     console.log("Taxas de câmbio atualizadas:", cotacoes);
     return cotacoes;
@@ -92,56 +112,30 @@ async function buscarCotacoes() {
 }
 
 function fazerConversao() {
-  const valorReais = parseFloat(valorSelecionadoInput.value);
-  const moedaSelecionada = document.querySelector(
-    'input[name="moedas"]:checked'
-  ).value;
-  let resultado;
+  const valorMoeda = parseFloat(valorInserido.value);
+  const moeda = moedaSelecionada.value;
 
-  switch (moedaSelecionada) {
-    case "dolar":
-      resultado = valorReais / taxasCambio.dolar;
-      resultadoSaida.value = resultado.toLocaleString("en-US", {
-        style: "currency",
-        currency: "USD",
-      });
-      break;
-    case "euro":
-      resultado = valorReais / taxasCambio.euro;
-      resultadoSaida.value = resultado.toLocaleString("de-DE", {
-        style: "currency",
-        currency: "EUR",
-      });
-      break;
-    case "libra":
-      resultado = valorReais / taxasCambio.libra;
-      resultadoSaida.value = resultado.toLocaleString("en-GB", {
-        style: "currency",
-        currency: "GBP",
-      });
-      break;
-    case "bitcoin":
-      resultado = valorReais / taxasCambio.bitcoin;
-      console.log("Valor em Bitcoin:", resultado);
-      resultadoSaida.value = resultado.toLocaleString("en-US", {
-        style: "currency",
-        currency: "BTC",
-        minimumFractionDigits: 4,
-        maximumFractionDigits: 8,
-      });
-      break;
-    default:
-      resultado = 0;
+  if (taxasCambio[moeda]) {
+    const resultado = valorMoeda * taxasCambio[moeda];
+    resultadoSaida.value = resultado.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+  } else {
+    alert("Selecione uma moeda válida.");
+    resultadoSaida.value = "0,00 R$";
   }
 }
 
 function carregarCotacoesAtualizadas() {
-  listaCotacoes[0].textContent = `Dólar: R$ ${taxasCambio.dolar.toFixed(2)}`;
-  listaCotacoes[1].textContent = `Euro: R$ ${taxasCambio.euro.toFixed(2)}`;
-  listaCotacoes[2].textContent = `Libra: R$ ${taxasCambio.libra.toFixed(2)}`;
-  listaCotacoes[3].textContent = `Bitcoin: R$ ${taxasCambio.bitcoin.toFixed(
-    2
-  )}`;
+  ulCotacoes.innerHTML = moedas
+    .map(
+      (m) =>
+        `<li class="item-cotacao">${m.nome}: R$ ${
+          taxasCambio[m.value]?.toFixed(4) || "..."
+        }</li>`
+    )
+    .join("");
 
   const dataAtual = new Date();
 
@@ -156,5 +150,5 @@ function carregarCotacoesAtualizadas() {
     })
     .replace(",", " às");
 
-  ultimaConsulta.textContent = `Última consulta: ${dataFormatada}`;
+  dadosDaConsulta.textContent = `Última consulta: ${dataFormatada}`;
 }
