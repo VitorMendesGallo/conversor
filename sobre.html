@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Conversor para real</title>
+    <title>Sobre o Conversor</title>
     <link
       rel="shortcut icon"
       href="assets/images/favicon.ico"
@@ -21,7 +21,7 @@
     <header>
       <nav class="navbar navbar-expand-lg cor-especial navbar-dark">
         <div class="container-fluid">
-          <a class="navbar-brand fonte-especial texto-com-sombra" href="#"
+          <a class="navbar-brand fonte-especial texto-com-sombra" href="index.html"
             ><img
               src="assets/images/logo.png"
               alt="Logo do site"
@@ -46,12 +46,10 @@
           >
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#"
-                  >Conversor</a
-                >
+                <a class="nav-link" href="index.html">Conversor</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="sobre.html">Sobre</a>
+                <a class="nav-link active" aria-current="page" href="#">Sobre</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Entre em Contato</a>
@@ -63,50 +61,30 @@
     </header>
 
     <main>
-      <h1 class="titulo-principal">
-        Converta várias moedas para Real
-      </h1>
-
-      <form class="conversor">
-        <label for="moeda">Selecione uma moeda para a conversão:</label>
-
-        <select name="moeda" id="moeda">
-          
-        </select>
-
-        <div class="valor-resultado">
-          <div class="container-valor-selecionado">
-            <label for="valor-selecionado">Valor Selecionado:</label>
-            <input type="number" name="valor-selecionado" id="valor-selecionado" min="0" />
-          </div>
-          <button type="button" id="botao-converter">
-            <img
-              src="assets/images/convert.png"
-              alt="Setas em esperial indicando conversão"
-              id="icone-botao-converter"
-            />
-          </button>
-          <div class="container-resultado">
-            <p>Resultado em Reais:</p>
-            <output id="resultado" for="valor-selecionado">0,00 R$</output>
-          </div>
-        </div>
-
-        <div class="container-limpar">
-          <button type="reset" id="botao-limpar">Limpar</button>
-        </div>
-      </form>
-
-      <aside class="cotacoes">
-        <h3 class="fonte-especial">Cotações</h3>
-        <div class="d-flex align-items-center justify-content-evenly">
-          <ul id="lista-cotacoes">
-            <!-- Itens gerados pelo JS -->
-          
-          </ul>
-          <p id="ultima-consulta"></p>
-        </div>
-      </aside>
+      <h1 class="titulo-principal">Sobre o Conversor de Moedas</h1>
+      <section class="container mt-4 mb-4 p-4 rounded shadow">
+        <h2 class="mb-3">O que é este projeto?</h2>
+        <p>
+          Este conversor de moedas foi desenvolvido para facilitar a conversão de diversas moedas estrangeiras para o Real brasileiro (BRL), utilizando cotações atualizadas em tempo real. O sistema é simples, moderno e responsivo, pensado para ser fácil de usar em qualquer dispositivo.
+        </p>
+        <h2 class="mt-4 mb-3">Funcionalidades</h2>
+        <ul>
+          <li>Conversão instantânea de várias moedas para Real</li>
+          <li>Cotações atualizadas automaticamente via API</li>
+          <li>Interface intuitiva e responsiva</li>
+          <li>Design limpo e agradável</li>
+        </ul>
+        <h2 class="mt-4 mb-3">Tecnologias utilizadas</h2>
+        <ul>
+          <li>HTML5, CSS3 (com Bootstrap) e JavaScript</li>
+          <li>Consumo de API pública para cotações</li>
+        </ul>
+        <h2 class="mt-4 mb-3">Sobre o autor</h2>
+        <p>
+          Projeto desenvolvido por <strong>Vitor Mendes</strong>.<br />
+          Para dúvidas, sugestões ou colaborações, entre em contato pelo GitHub ou pelo formulário de contato.
+        </p>
+      </section>
     </main>
 
     <footer>
@@ -118,6 +96,5 @@
       integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
       crossorigin="anonymous"
     ></script>
-    <script src="scripts/script.js"></script>
   </body>
 </html>
