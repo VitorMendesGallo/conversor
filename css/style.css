@@ -25,7 +25,7 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: rgba(255,255,255,0.5); 
+  background: rgba(255, 255, 255, 0.5);
   pointer-events: none;
   z-index: -1;
 }
@@ -66,7 +66,6 @@ form.conversor {
   color: var(--cor-forte);
 }
 
-
 .valor-resultado label {
   color: var(--cor-forte);
 }
@@ -85,7 +84,6 @@ div.container-resultado {
   flex-direction: column;
   align-items: center;
   width: 30%;
-  
 }
 
 .valor-resultado input {
@@ -228,16 +226,14 @@ footer p {
   }
 }
 
-@media screen and (max-width: 720px){
-
-   .cotacoes div {
+@media screen and (max-width: 720px) {
+  .cotacoes div {
     flex-direction: column;
   }
 
   .cotacoes ul {
     padding-left: 0px;
   }
-  
 }
 
 @media screen and (max-width: 550px) {
@@ -264,6 +260,12 @@ footer p {
     width: 100%;
   }
 
+  #valor-selecionado,
+  #resultado {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
 }
 
 @media screen and (max-width: 300px) {
@@ -275,5 +277,4 @@ footer p {
   div.container-resultado {
     width: 100%;
   }
-  
 }

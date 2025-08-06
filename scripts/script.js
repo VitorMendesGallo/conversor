@@ -6,6 +6,7 @@ const resultadoSaida = document.getElementById("resultado");
 const botaoLimpar = document.getElementById("botao-limpar");
 const ulCotacoes = document.getElementById("lista-cotacoes");
 const dadosDaConsulta = document.getElementById("ultima-consulta");
+const formulario = document.querySelector("form.conversor");
 
 const moedas = [
   { nome: "Dólar", codigo: "USD", value: "dolar" },
@@ -14,7 +15,7 @@ const moedas = [
   { nome: "Bitcoin", codigo: "BTC", value: "bitcoin" },
   { nome: "Peso Argentino", codigo: "ARS", value: "peso_argentino" },
   { nome: "Iene", codigo: "JPY", value: "iene" },
-  { nome: "Franco Suíço", codigo: "CHF", value: "franco_suico" }, 
+  { nome: "Franco Suíço", codigo: "CHF", value: "franco_suico" },
   { nome: "Dólar Canadense", codigo: "CAD", value: "dolar_canadense" },
   { nome: "Dólar Australiano", codigo: "AUD", value: "dolar_australiano" },
   { nome: "Yuan Chinês", codigo: "CNY", value: "yuan_chines" },
@@ -24,6 +25,29 @@ const moedas = [
 botaoConverter.disabled = true;
 
 let taxasCambio = {};
+
+formulario.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  if (parseFloat(valorInserido.value) > 0) {
+    botaoConverter.click();
+  } else {
+    alert("Por favor, insira um valor válido maior que zero.");
+    resultadoSaida.value = "0,00 R$";
+  }
+});
+
+valorInserido.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    if (parseFloat(valorInserido.value) > 0) {
+      botaoConverter.click();
+    } else {
+      alert("Por favor, insira um valor válido maior que zero.");
+      resultadoSaida.value = "0,00 R$";
+    }
+  }
+});
 
 document.addEventListener("DOMContentLoaded", async () => {
   moedaSelecionada.innerHTML =
